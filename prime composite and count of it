@@ -1,0 +1,43 @@
+
+
+public class PrimeComposite {
+    public static void main(String[] args) {
+        int[] numbers = {12, 23, 34, 45, 56, 67, 78, 89};
+
+        int primeCount = 0;
+        int compositeCount = 0;
+
+        System.out.println("Prime numbers: ");
+        for (int num : numbers) {
+            if (isPrime(num)) {
+                System.out.print(num + " ");
+                primeCount++;
+            }
+        }
+
+        System.out.println("\nComposite numbers: ");
+        for (int num : numbers) {
+            if (!isPrime(num)) {
+                System.out.print(num + " ");
+                compositeCount++;
+            }
+        }
+
+        System.out.println("\nCount of Prime numbers: " + primeCount);
+        System.out.println("Count of Composite numbers: " + compositeCount);
+    }
+
+    public static boolean isPrime(int num) {
+        if (num <= 1) {
+            return false;
+        }
+        for (int i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i == 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
+
+
