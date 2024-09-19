@@ -1,0 +1,46 @@
+import java.io.*;
+import java.util.*;
+public class multiplication_thread
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        A threadA=new A();
+        B threadB=new B();
+        threadA.start();
+        try {
+            threadA.join();
+        } catch (InterruptedException e) {
+            System.out.println("Thread A interrupted: " + e.getMessage());
+        }
+        
+        threadB.start();
+        try {
+            threadB.join();
+        } catch (InterruptedException e) {
+            System.out.println("Thread B interrupted: " + e.getMessage());
+        }
+
+    }
+    static class A extends Thread{
+        public void run()
+        {
+            int n=5;
+            for(int i=1;i<=10;i++)
+            {
+                System.out.println(n+"*"+i+"="+(n*i));
+            }
+        }
+    }
+    static class B extends Thread{
+        public void run()
+        {
+            int n=10;
+            for(int i=1;i<=n;i++)
+            {
+                System.out.println(n+"*"+i+"="+(n*i));
+            }
+        }
+    }
+
+}
